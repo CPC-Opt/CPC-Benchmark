@@ -1,105 +1,51 @@
 format long g;
 global lb ub;
-% Test Function 7
+% Test Function 24
 function fval = obj_function(x)
-   logbase1 = 0.1-5.*sin((5+1).*(power(x(3),3.))/5+5);
+   sqrtbase1 = sin((power((x(1)-x(2)),2)));
+   if sqrtbase1 < 0
+      fval = 1e100;
+      return;
+   end
+
+   powbase1 = (0.45-sin(x(1)));
+   if powbase1 < 0
+      fval = 1e100;
+      return;
+   end
+
+   powbase2 = (0.55-cos(x(2)));
+   if powbase2 < 0
+      fval = 1e100;
+      return;
+   end
+
+   logbase1 = sin(x(1)).*sin((power(powbase2,(-0.2))))+cos(x(2)).*cos((power(powbase1,0.2)))+sqrt(sqrtbase1);
    if logbase1 <= 0
       fval = 1e100;
       return;
    end
 
-   logbase2 = 0.1-4.*sin((4+1).*(power(x(3),3.))/4+4);
+   asinbase1 = log(sin(x(1)).*sin((power(powbase2,(-0.2))))+cos(x(2)).*cos((power(powbase1,0.2)))+sqrt(sqrtbase1));
+   if abs(asinbase1) > 1
+      fval = 1e100;
+      return;
+   end
+
+   sqrtbase2 = asin(log(sin(x(1)).*sin((power(powbase2,(-0.2))))+cos(x(2)).*cos((power(powbase1,0.2)))+sqrt(sqrtbase1)));
+   if sqrtbase2 < 0
+      fval = 1e100;
+      return;
+   end
+
+   logbase2 = sqrt(asin(log(sin(x(1)).*sin((power(powbase2,(-0.2))))+cos(x(2)).*cos((power(powbase1,0.2)))+sqrt(sqrtbase1))));
    if logbase2 <= 0
       fval = 1e100;
       return;
    end
 
-   logbase3 = 0.1-3.*sin((3+1).*(power(x(3),3.))/3+3);
-   if logbase3 <= 0
-      fval = 1e100;
-      return;
-   end
-
-   logbase4 = 0.1-2.*sin((2+1).*(power(x(3),3.))/2+2);
-   if logbase4 <= 0
-      fval = 1e100;
-      return;
-   end
-
-   logbase5 = 0.1-1.*sin((1+1).*(power(x(3),3.))/1+1);
-   if logbase5 <= 0
-      fval = 1e100;
-      return;
-   end
-
-   logbase6 = 0.1-5.*sin((5+1).*(power(x(2),2.))/5+5);
-   if logbase6 <= 0
-      fval = 1e100;
-      return;
-   end
-
-   logbase7 = 0.1-4.*sin((4+1).*(power(x(2),2.))/4+4);
-   if logbase7 <= 0
-      fval = 1e100;
-      return;
-   end
-
-   logbase8 = 0.1-3.*sin((3+1).*(power(x(2),2.))/3+3);
-   if logbase8 <= 0
-      fval = 1e100;
-      return;
-   end
-
-   logbase9 = 0.1-2.*sin((2+1).*(power(x(2),2.))/2+2);
-   if logbase9 <= 0
-      fval = 1e100;
-      return;
-   end
-
-   logbase10 = 0.1-1.*sin((1+1).*(power(x(2),2.))/1+1);
-   if logbase10 <= 0
-      fval = 1e100;
-      return;
-   end
-
-   logbase11 = 0.1-5.*sin((5+1).*(power(x(1),1.))/5+5);
-   if logbase11 <= 0
-      fval = 1e100;
-      return;
-   end
-
-   logbase12 = 0.1-4.*sin((4+1).*(power(x(1),1.))/4+4);
-   if logbase12 <= 0
-      fval = 1e100;
-      return;
-   end
-
-   logbase13 = 0.1-3.*sin((3+1).*(power(x(1),1.))/3+3);
-   if logbase13 <= 0
-      fval = 1e100;
-      return;
-   end
-
-   logbase14 = 0.1-2.*sin((2+1).*(power(x(1),1.))/2+2);
-   if logbase14 <= 0
-      fval = 1e100;
-      return;
-   end
-
-   logbase15 = 0.1-1.*sin((1+1).*(power(x(1),1.))/1+1);
-   if logbase15 <= 0
-      fval = 1e100;
-      return;
-   end
-
-   fval = -(((log(logbase15))+log(logbase14)+log(logbase13)+log(logbase12)+log(logbase11))+(log(logbase10))+...
-log(logbase9)+log(logbase8)+log(logbase7)+log(logbase6)+(log(logbase5))+log(logbase4)+log(logbase3)+...
-log(logbase2)+log(logbase1));
+   fval = -log(logbase2).*1000;
 end
-lb = [-10,-10,-10];
-ub = [10,10,10];
-PopSz = 2000;
-ParamNo = 3;
 
 
 

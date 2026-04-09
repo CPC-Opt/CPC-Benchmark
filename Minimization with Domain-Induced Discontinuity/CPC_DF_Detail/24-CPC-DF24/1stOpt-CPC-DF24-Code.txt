@@ -1,0 +1,4 @@
+NewCodeBlock "Case-24";
+Hardness = 2; //1,2,...5
+ParameterDomain = [-2*pi,2*pi];
+MinFunction -ln(sqrt(arcsin(ln(sin(x1)*sin((0.55-cos(x2))^(-0.2))+cos(x2)*cos((0.45-sin(x1))^0.2)+sqrt(sin((x1-x2)^2))))))*1000;

@@ -2,36 +2,50 @@ format long g;
 
 % Test Function 24
 function fval = obj_function(x)
-   powbase1 = ((power(x(1),2))+(power(x(2),2))-5);
-   if powbase1 < 0
-      fval = 1e100;
-      return;
-   end
-
-   sqrtbase1 = 100-(power(x(1),2))-(power(x(2),2));
+   sqrtbase1 = sin((power((x(1)-x(2)),2)));
    if sqrtbase1 < 0
       fval = 1e100;
       return;
    end
 
-   powbase2 = (sin(sqrt(sqrtbase1)));
+   powbase1 = (0.45-sin(x(1)));
+   if powbase1 < 0
+      fval = 1e100;
+      return;
+   end
+
+   powbase2 = (0.55-cos(x(2)));
    if powbase2 < 0
       fval = 1e100;
       return;
    end
 
-   logbase1 = 2.*(power((sin(sqrt(sqrtbase1))),0.25))-1;
+   logbase1 = sin(x(1)).*sin((power(powbase2,(-0.2))))+cos(x(2)).*cos((power(powbase1,0.2)))+sqrt(sqrtbase1);
    if logbase1 <= 0
       fval = 1e100;
       return;
    end
 
-   fval = 1+log(logbase1)./(power((1+0.001.*(power(powbase1,0.25))),2));
+   asinbase1 = log(sin(x(1)).*sin((power(powbase2,(-0.2))))+cos(x(2)).*cos((power(powbase1,0.2)))+sqrt(sqrtbase1));
+   if abs(asinbase1) > 1
+      fval = 1e100;
+      return;
+   end
+
+   sqrtbase2 = asin(log(sin(x(1)).*sin((power(powbase2,(-0.2))))+cos(x(2)).*cos((power(powbase1,0.2)))+sqrt(sqrtbase1)));
+   if sqrtbase2 < 0
+      fval = 1e100;
+      return;
+   end
+
+   logbase2 = sqrt(asin(log(sin(x(1)).*sin((power(powbase2,(-0.2))))+cos(x(2)).*cos((power(powbase1,0.2)))+sqrt(sqrtbase1))));
+   if logbase2 <= 0
+      fval = 1e100;
+      return;
+   end
+
+   fval = -log(logbase2).*1000;
 end
-lb = [-100,-100];
-ub = [100,100];
-PopSz = 2000;
-ParamNo = 2;
 
 
 
