@@ -1,4 +1,4 @@
-# CPC-Benchmark Dataset
+# CPC-Benchmark
 
 **CPC (Challenging Problems for Computation)** is a benchmark dataset providing a collection of challenging optimization problems for benchmarking global optimization algorithms in relatively low-dimensional spaces.
 
