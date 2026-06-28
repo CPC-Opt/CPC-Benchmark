@@ -1,0 +1,5 @@
+NewCodeBlock "Case-2"; 
+Algorithm = SM2; 
+Constant n=5;
+Parameters x(1:n)=[0,10];
+MinFunction Sum(i=1:n)(sqrt((10*ln(x[i])*sin(pi*x[i]/5))^1.5-(10*ln(x[i])*cos(x[i]*pi*(i-1)/5)-i)^1.5));

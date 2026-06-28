@@ -3,61 +3,151 @@ global lb ub;
 % Test Function 2
 
 function fval = obj_function(x)
-   powbase1 = (10.*cos(2.*pi.*x(5).*(5-1))-8);
+   logbase1 = x(5);
+   if logbase1 <= 0
+      fval = 1e100;
+      return;
+   end
+
+   powbase1 = (10.*log(logbase1).*cos(logbase1.*pi.*(5-1)/5)-5);
    if powbase1 < 0
       fval = 1e100;
       return;
    end
 
-   sqrtbase1 = 10.*x(5).*sin(x(5))-(power(powbase1,0.03));
-   if sqrtbase1 < 0
+   logbase2 = logbase1;
+   if logbase2 <= 0
       fval = 1e100;
       return;
    end
 
-   powbase2 = (10.*cos(2.*pi.*x(4).*(4-1))-8);
+   powbase2 = (10.*log(logbase2).*sin(pi.*logbase2/5));
    if powbase2 < 0
       fval = 1e100;
       return;
    end
 
-   sqrtbase2 = 10.*x(4).*sin(x(4))-(power(powbase2,0.03));
-   if sqrtbase2 < 0
+   sqrtbase1 = (power(powbase2,1.5))-(power(powbase1,1.5));
+   if sqrtbase1 < 0
       fval = 1e100;
       return;
    end
 
-   powbase3 = (10.*cos(2.*pi.*x(3).*(3-1))-8);
+   logbase3 = x(4);
+   if logbase3 <= 0
+      fval = 1e100;
+      return;
+   end
+
+   powbase3 = (10.*log(logbase3).*cos(logbase3.*pi.*(4-1)/5)-4);
    if powbase3 < 0
       fval = 1e100;
       return;
    end
 
-   sqrtbase3 = 10.*x(3).*sin(x(3))-(power(powbase3,0.03));
-   if sqrtbase3 < 0
+   logbase4 = logbase3;
+   if logbase4 <= 0
       fval = 1e100;
       return;
    end
 
-   powbase4 = (10.*cos(2.*pi.*x(2).*(2-1))-8);
+   powbase4 = (10.*log(logbase4).*sin(pi.*logbase4/5));
    if powbase4 < 0
       fval = 1e100;
       return;
    end
 
-   sqrtbase4 = 10.*x(2).*sin(x(2))-(power(powbase4,0.03));
-   if sqrtbase4 < 0
+   sqrtbase2 = (power(powbase4,1.5))-(power(powbase3,1.5));
+   if sqrtbase2 < 0
       fval = 1e100;
       return;
    end
 
-   powbase5 = (10.*cos(2.*pi.*x(1).*(1-1))-8);
+   logbase5 = x(3);
+   if logbase5 <= 0
+      fval = 1e100;
+      return;
+   end
+
+   powbase5 = (10.*log(logbase5).*cos(logbase5.*pi.*(3-1)/5)-3);
    if powbase5 < 0
       fval = 1e100;
       return;
    end
 
-   sqrtbase5 = 10.*x(1).*sin(x(1))-(power(powbase5,0.03));
+   logbase6 = logbase5;
+   if logbase6 <= 0
+      fval = 1e100;
+      return;
+   end
+
+   powbase6 = (10.*log(logbase6).*sin(pi.*logbase6/5));
+   if powbase6 < 0
+      fval = 1e100;
+      return;
+   end
+
+   sqrtbase3 = (power(powbase6,1.5))-(power(powbase5,1.5));
+   if sqrtbase3 < 0
+      fval = 1e100;
+      return;
+   end
+
+   logbase7 = x(2);
+   if logbase7 <= 0
+      fval = 1e100;
+      return;
+   end
+
+   powbase7 = (10.*log(logbase7).*cos(logbase7.*pi.*(2-1)/5)-2);
+   if powbase7 < 0
+      fval = 1e100;
+      return;
+   end
+
+   logbase8 = logbase7;
+   if logbase8 <= 0
+      fval = 1e100;
+      return;
+   end
+
+   powbase8 = (10.*log(logbase8).*sin(pi.*logbase8/5));
+   if powbase8 < 0
+      fval = 1e100;
+      return;
+   end
+
+   sqrtbase4 = (power(powbase8,1.5))-(power(powbase7,1.5));
+   if sqrtbase4 < 0
+      fval = 1e100;
+      return;
+   end
+
+   logbase9 = x(1);
+   if logbase9 <= 0
+      fval = 1e100;
+      return;
+   end
+
+   powbase9 = (10.*log(logbase9).*cos(logbase9.*pi.*(1-1)/5)-1);
+   if powbase9 < 0
+      fval = 1e100;
+      return;
+   end
+
+   logbase10 = logbase9;
+   if logbase10 <= 0
+      fval = 1e100;
+      return;
+   end
+
+   powbase10 = (10.*log(logbase10).*sin(pi.*logbase10/5));
+   if powbase10 < 0
+      fval = 1e100;
+      return;
+   end
+
+   sqrtbase5 = (power(powbase10,1.5))-(power(powbase9,1.5));
    if sqrtbase5 < 0
       fval = 1e100;
       return;
@@ -65,13 +155,10 @@ function fval = obj_function(x)
 
    fval = sqrt(sqrtbase5)+sqrt(sqrtbase4)+sqrt(sqrtbase3)+sqrt(sqrtbase2)+sqrt(sqrtbase1);
 end
-
-lb = [-5,-5,-5,-5,-5];
-ub = [5,5,5,5,5];
+lb = [0,0,0,0,0];
+ub = [10,10,10,10,10];
 PopSz = 2000;
 ParamNo = 5;
-
-
 
 
 

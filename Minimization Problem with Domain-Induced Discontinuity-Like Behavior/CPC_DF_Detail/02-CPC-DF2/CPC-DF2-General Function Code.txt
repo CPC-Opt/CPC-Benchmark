@@ -1,0 +1,6 @@
+sqrt((10*ln(x1)*sin(pi*x1/5))^1.5-(10*ln(x1)*cos(x1*pi*(1-1)/5)-1)^1.5)+sqrt((10*ln(x2)*sin(pi*
+x2/5))^1.5-(10*ln(x2)*cos(x2*pi*(2-1)/5)-2)^1.5)+sqrt((10*ln(x3)*sin(pi*x3/5))^1.5-(10*ln(x3)*
+cos(x3*pi*(3-1)/5)-3)^1.5)+sqrt((10*ln(x4)*sin(pi*x4/5))^1.5-(10*ln(x4)*cos(x4*pi*(4-1)/5)-4)^1.5)+
+(sqrt((10*ln(x5)*sin(pi*x5/5))^1.5-(10*ln(x5)*cos(x5*pi*(5-1)/5)-5)^1.5))
+
+* Note that ln denotes the natural logarithm, i.e., logarithm to the base e.
