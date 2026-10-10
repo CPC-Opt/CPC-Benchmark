@@ -1,6 +1,6 @@
 NewCodeBlock "Case-18";
 Hardness = 2; //1,2,...5
-Algorithm = DE1;//SM2;
+Algorithm = SM2;//DE1;
 MultiRun = 10;
 StartRange = [-50,50];
 ParameterDomain = [-5000,5000];

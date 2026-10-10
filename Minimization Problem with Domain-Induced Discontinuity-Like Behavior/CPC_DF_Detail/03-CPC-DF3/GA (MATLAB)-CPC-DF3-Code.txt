@@ -2,28 +2,42 @@ format long g;
 
 % Test Function 3
 function fval = obj_function(x)
-   logbase1 = 33.*x(1)-x(1).*x(2)+5-(power(((power((x(1)-4),2))+(power((x(2)-5),2))-4),2));
+   sqrtbase1 = x(2)+x(1)-1.01.*x(1).*x(2);
+   if sqrtbase1 < 0
+      fval = 1e100;
+      return;
+   end
+
+   sqrtbase2 = (power(x(2),2))-x(1)-10.1.*x(1).*x(2);
+   if sqrtbase2 < 0
+      fval = 1e100;
+      return;
+   end
+
+   sqrtbase3 = (power(x(1),2))-x(2)+10.1.*x(1).*x(2);
+   if sqrtbase3 < 0
+      fval = 1e100;
+      return;
+   end
+
+   powbase1 = 10.1-sqrt(sqrtbase3)/exp((power(x(2),2))-5.1.*x(1)-x(1).*x(2))-sqrt(sqrtbase2)/exp((power(x(1),2))+5.1.*x(2)-x(1).*x(2));
+   if powbase1 < 0
+      fval = 1e100;
+      return;
+   end
+
+   logbase1 = 1+(power((powbase1),0.25));
    if logbase1 <= 0
       fval = 1e100;
       return;
    end
 
-   logbase2 = cos(-2./3.*(power(x(1),3))-8.*(power(x(1),2)));
-   if logbase2 <= 0
-      fval = 1e100;
-      return;
-   end
-
-   logbase3 = x(1)-x(2).*log(logbase2);
-   if logbase3 <= 0
-      fval = 1e100;
-      return;
-   end
-
-   fval = -log(logbase3)-log(logbase1);
+   fval = 10.1.*x(1).*x(2)-log(logbase1)+10.1.*exp((power(x(1),2))+(power(x(2),2))-10.1.*x(1).*x(2))+...
+(sqrt(sqrtbase1))/((power(x(1),2))+(power(x(2),2)));
 end
-lb = [-100,-100];
-ub = [100,100];
+
+lb = [-5,-5];
+ub = [5,5];
 PopSz = 2000;
 ParamNo = 2;
 

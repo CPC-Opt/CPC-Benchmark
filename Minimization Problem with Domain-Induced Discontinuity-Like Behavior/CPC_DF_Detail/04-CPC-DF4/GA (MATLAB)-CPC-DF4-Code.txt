@@ -14,7 +14,7 @@ function fval = obj_function(x)
       return;
    end
 
-   sqrtbase2 = x(5)+x(4)./2+47;
+   sqrtbase2 = x(5)+x(4)/2+47;
    if sqrtbase2 < 0
       fval = 1e100;
       return;
@@ -32,7 +32,7 @@ function fval = obj_function(x)
       return;
    end
 
-   sqrtbase4 = x(4)+x(3)./2+47;
+   sqrtbase4 = x(4)+x(3)/2+47;
    if sqrtbase4 < 0
       fval = 1e100;
       return;
@@ -50,7 +50,7 @@ function fval = obj_function(x)
       return;
    end
 
-   sqrtbase6 = x(3)+x(2)./2+47;
+   sqrtbase6 = x(3)+x(2)/2+47;
    if sqrtbase6 < 0
       fval = 1e100;
       return;
@@ -68,15 +68,15 @@ function fval = obj_function(x)
       return;
    end
 
-   sqrtbase8 = x(2)+x(1)./2+47;
+   sqrtbase8 = x(2)+x(1)/2+47;
    if sqrtbase8 < 0
       fval = 1e100;
       return;
    end
 
-   fval = -(x(2)+47).*sin(sqrt(sqrtbase8))+log(logbase4).*(-x(1))+(-(x(3)+47).*sin(sqrt(sqrtbase6))+...
-log(logbase3).*(-x(2)))+(-(x(4)+47).*sin(sqrt(sqrtbase4))+log(logbase2).*(-x(3)))+(-(x(5)+47).*sin(sqrt(sqrtbase2))+...
-log(logbase1).*(-x(4)));
+   fval = -(x(2)+47).*sin(sqrt(sqrtbase8))-(power(x(1),2.))*log(logbase4)+(-(x(3)+47).*sin(sqrt(sqrtbase6))-...
+(power(x(2),2.))*log(logbase3))+(-(x(4)+47).*sin(sqrt(sqrtbase4))-(power(x(3),2.))*log(logbase2))+(-...
+(x(5)+47).*sin(sqrt(sqrtbase2))-(power(x(4),2.))*log(logbase1));
 end
 lb = [-512,-512,-512,-512,-512];
 ub = [512,512,512,512,512];
